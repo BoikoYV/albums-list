@@ -1,0 +1,22 @@
+{
+  "name": "fe2",
+  "version": "1.0.0",
+  "description": "В данном документе описываются основные принципы и подходы к обучению, используемые в Dan.IT Education. Советуем перечитать этот документ минимум два раза :) Один раз перед началом обучения, второй - по прошествии трех-четырех занятий. Люди, с которыми вы будете работать",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.com:dan-it/right-coast/pe2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "babel-jest": "^27.1.0",
+    "jest": "^27.1.0"
+  }
+}

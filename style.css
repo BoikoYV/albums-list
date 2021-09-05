@@ -1,0 +1,80 @@
+p {
+    margin: 0;
+}
+
+.select {
+    width: 200px;
+    margin: 40px 20px;
+}
+
+#show-comments {
+    margin: 40px 20px;
+}
+
+.btn-list, .btn-grid {
+    width: 25px;
+    height: 25px;
+    border: none;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.list-style-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-list {
+    background-image: url("./list.svg");
+    margin-right: 15px;
+}
+
+.btn-grid {
+    background-image: url("./grid.svg");
+    background-size: 88%;
+}
+
+.albums__header, .album {
+    display: grid;
+    grid-template-columns: 0.3fr 0.3fr 2fr 1fr 80px;
+    column-gap: 5%;
+    padding: .75rem;
+    align-items: center;
+    border-top: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+    font-weight: 700;
+}
+
+.album {
+    font-weight: 400;
+}
+
+.list {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 3%;
+}
+
+.grid .album {
+    grid-template-columns: 1fr;
+    border-bottom: none;
+    row-gap: 5px;
+}
+
+.grid .album:first-child, .grid .album:nth-child(2) {
+    border-top: none;
+}
+
+.user-email {
+    display: block;
+}
+
+.delete-btn {
+    margin-bottom: 30px;
+}
