@@ -10,7 +10,7 @@ export class AlbumRaw {
         <div class="album">
             <div class=" input-group-prepend">
                 <div class="input-group-text">
-                    <input type="checkbox" aria-label="Radio button for following text input">
+                    <input class="album-checkbox" type="checkbox" aria-label="Radio button for following text input">
                 </div>
             </div>
             <p>${this.id}</p>

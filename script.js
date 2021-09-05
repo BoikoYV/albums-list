@@ -3,6 +3,7 @@ import { AlbumTable } from './albumTable.js'
 
 const searchInput = document.querySelector('#search-input')
 const searchBtn = document.querySelector('#search-btn');
+const deleteBtn = document.querySelector('.delete-btn');
 
 const root = document.querySelector('#root')
 
@@ -32,3 +33,22 @@ searchBtn.addEventListener('click', async (event) => {
     console.log(albumTable);
 })
 
+
+
+const mainCheckbox = document.querySelector('.main-checkbox');
+
+if (mainCheckbox) {
+    mainCheckbox.addEventListener('change', (e) => {
+        albumTable.setAllCheckboxes(e.target.checked);
+    })
+
+}
+
+deleteBtn.addEventListener('click', () => {
+    const albumsList = document.querySelector('.albums__list');
+    if (albumsList.innerHTML !== '') {
+        albumTable.deleteAlbum();
+    } if (mainCheckbox.checked) {
+        albumsList.innerHTML = '';
+    }
+})

@@ -2,8 +2,8 @@ import { AlbumRaw } from './albumRaw.js'
 
 export class AlbumTable {
     constructor() {
-        this.view = 'list'
-        this.albums = []
+        this.view = 'list';
+        this.albums = [];
     }
 
     setView(view) {
@@ -18,6 +18,9 @@ export class AlbumTable {
 
     renderView() {
         const album = this.albumsContainer.querySelector('.albums__list');
+        const mainCheckbox = this.albumsHeader.querySelector('.main-checkbox');
+        mainCheckbox.checked = false;
+
         album.innerHTML = "";
         album.classList.remove(...['list', 'grid']);
 
@@ -27,18 +30,34 @@ export class AlbumTable {
             this.renderAlbumsGrid()
         }
     }
+
     renderAlbum() {
-        const albumsList = this.albumsContainer.querySelector('.albums__list')
+        const albumsList = this.albumsContainer.querySelector('.albums__list');
+        this.albumsList = albumsList;
+        const mainCheckbox = this.albumsHeader.querySelector('.main-checkbox');
+        mainCheckbox.checked = false;
 
         for (const album of this.albums) {
-            const albumRaw = new AlbumRaw(album.id, album.title, album.userId)
-            // console.log(albumRaw);
+            const albumRaw = new AlbumRaw(album.id, album.title, album.userId, this.albumsContainer)
             albumsList.insertAdjacentHTML('beforeend', albumRaw.render())
         }
-        // console.log({data});
         return albumsList;
     }
 
+    deleteAlbum() {
+        const checkedAlbums = this.albumsList.querySelectorAll('.album-checkbox:checked');
+        const mainCheckbox = this.albumsHeader.querySelector('.main-checkbox');
+
+        mainCheckbox.checked = false;
+
+        checkedAlbums.forEach(checkbox => {
+            checkbox.closest('.album').remove();
+        });
+    }
+
+    deleteAlbumsListContent() {
+        this.albumsList.innerHTML = '';
+    }
     renderAlbumsList() {
         this.renderAlbum().classList.add('list');
     }
@@ -53,7 +72,7 @@ export class AlbumTable {
         const albumsHeader = this.createElement('div', ['albums__header'],
             `<div class="input-group-prepend">
                 <div class="input-group-text">
-                    <input type="checkbox" aria-label="Radio button for following text input">
+                    <input class="main-checkbox" type="checkbox" aria-label="Radio button for following text input">
                  </div>
             </div>
             <p>id</p>
@@ -65,6 +84,8 @@ export class AlbumTable {
             <button class="btn btn-grid"></button>`);
 
         buttonsBox.addEventListener('click', (event) => {
+            if (this.albumsList.innerHTML === '') return;
+
             if (event.target.closest('.btn-list')) {
                 this.setView('list')
             } else if (event.target.closest('.btn-grid')) {
@@ -74,10 +95,22 @@ export class AlbumTable {
 
         const albumsList = this.createElement('div', ['albums__list']);
 
+        this.albumsHeader = albumsHeader;
         albumsHeader.append(buttonsBox);
         this.albumsContainer.append(albumsHeader, albumsList);
         return this.albumsContainer;
     }
+
+    setAllCheckboxes(isChecked) {
+        const allCheckboxes = document.querySelectorAll('.album-checkbox');
+
+        allCheckboxes.forEach(checkbox => {
+            checkbox.checked = isChecked;
+
+
+        });
+    }
+
     createElement(tag, classes, text = '') {
         const element = document.createElement(tag);
         element.classList.add(...[classes]);
