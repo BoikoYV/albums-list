@@ -1,10 +1,23 @@
-import {range} from './range.js'
+import { range } from './range.js'
 
 export default function convertToArray(value) {
-    if (value.includes('-')) {
-        const [start, end] = value.split('-')
 
-        return range(start, end)
-    }
-    return value.split(',').map(str => +str)
+    const ranges = [];
+    const numbers = value.split(',').filter(str => {
+        if (str.includes('-')) {
+            ranges.push(str);
+            return;
+        }
+        if (str === '0') return;
+
+        return str;
+    });
+
+    const rangesArr = (ranges.map(element => {
+        const elementSteps = element.split('-');
+        return range(elementSteps[0], elementSteps[1])
+    })).flat();
+
+    const resultArr = [...new Set(numbers.map(number => +number).concat(rangesArr))];
+    return resultArr
 }

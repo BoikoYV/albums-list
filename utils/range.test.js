@@ -1,5 +1,5 @@
 import { expect, it } from '@jest/globals'
-import {range} from './range.js'
+import { range } from './range.js'
 
 describe('range function', () => {
     it('should return array from numbers', () => {
@@ -21,5 +21,10 @@ describe('range function', () => {
 
     it('should return start if start equals to end', () => {
         expect(range(3, 3)).toEqual([3])
+    })
+
+    it('should increase result by 1 if the value is 0', () => {
+        expect(range('0', '2')).toEqual([1, 2])
+        expect(range('10', '0')).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
     })
 })
