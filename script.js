@@ -49,6 +49,6 @@ deleteBtn.addEventListener('click', () => {
     if (albumsList.innerHTML !== '') {
         albumTable.deleteAlbum();
     } if (mainCheckbox.checked) {
-        albumsList.innerHTML = '';
+        albumTable.deleteAlbumsListContent()
     }
 })

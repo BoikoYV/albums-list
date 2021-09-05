@@ -17,18 +17,11 @@ export class AlbumTable {
     }
 
     renderView() {
-        const album = this.albumsContainer.querySelector('.albums__list');
+        const albums = this.albumsContainer.querySelector('.albums__list');
         const mainCheckbox = this.albumsHeader.querySelector('.main-checkbox');
         mainCheckbox.checked = false;
+        this.renderAlbum()
 
-        album.innerHTML = "";
-        album.classList.remove(...['list', 'grid']);
-
-        if (this.view === 'list') {
-            this.renderAlbumsList()
-        } else {
-            this.renderAlbumsGrid()
-        }
     }
 
     renderAlbum() {
@@ -56,14 +49,17 @@ export class AlbumTable {
     }
 
     deleteAlbumsListContent() {
-        this.albumsList.innerHTML = '';
+        if (this.albumsList)
+            this.albumsList.innerHTML = '';
     }
-    renderAlbumsList() {
-        this.renderAlbum().classList.add('list');
+    renderAlbumsList(list) {
+        list.classList.add('list');
+        list.classList.remove('grid');
     }
 
-    renderAlbumsGrid() {
-        this.renderAlbum().classList.add('grid');
+    renderAlbumsGrid(list) {
+        list.classList.add('grid');
+        list.classList.remove('list');
     }
 
     render() {
@@ -84,12 +80,11 @@ export class AlbumTable {
             <button class="btn btn-grid"></button>`);
 
         buttonsBox.addEventListener('click', (event) => {
-            if (this.albumsList.innerHTML === '') return;
 
             if (event.target.closest('.btn-list')) {
-                this.setView('list')
+                this.renderAlbumsList(albumsList);
             } else if (event.target.closest('.btn-grid')) {
-                this.setView('grid')
+                this.renderAlbumsGrid(albumsList);
             }
         })
 
