@@ -13,7 +13,7 @@ export class AlbumRaw {
                     <input class="album-checkbox" type="checkbox" aria-label="Radio button for following text input">
                 </div>
             </div>
-            <p>${this.id}</p>
+            <p class="album__id" data-id="${this.id}">${this.id}</p>
             <p>${this.title}</p>
             <p>${this.userId} Ervin Howell
                 <a class="user-email" href="mailto:useremail@gmail.com">@mdo</a>

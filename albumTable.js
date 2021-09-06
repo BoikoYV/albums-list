@@ -36,14 +36,23 @@ export class AlbumTable {
         return albumsList;
     }
 
-    deleteAlbum() {
+    async deleteAlbum() {
         const checkedAlbums = this.albumsList.querySelectorAll('.album-checkbox:checked');
         const mainCheckbox = this.albumsHeader.querySelector('.main-checkbox');
 
         mainCheckbox.checked = false;
 
         checkedAlbums.forEach(checkbox => {
-            checkbox.closest('.album').remove();
+            const closestAlbum = checkbox.closest('.album');
+            const closestAlbumId = closestAlbum.querySelector('.album__id').dataset.id;
+
+            fetch(`https://ajax.test-danit.com/api/json/albums/${closestAlbumId}`, {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' }
+            }).then((response) => {
+                if (!response.ok) throw new Error('Server Error')
+                closestAlbum.remove();
+            })
         });
     }
 
