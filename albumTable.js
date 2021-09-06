@@ -24,6 +24,7 @@ export class AlbumTable {
 
     renderAlbum() {
         const albumsList = this.albumsContainer.querySelector('.albums__list');
+        albumsList.innerHTML = '';
         this.albumsList = albumsList;
         const mainCheckbox = this.albumsHeader.querySelector('.main-checkbox');
         mainCheckbox.checked = false;

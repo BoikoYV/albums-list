@@ -30,7 +30,6 @@ searchBtn.addEventListener('click', async (event) => {
     const ids = convertToArray(value)
     const albums = await getAlbums(ids)
     albumTable.setAlbums(albums)
-    console.log(albumTable);
 })
 
 
