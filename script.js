@@ -37,18 +37,19 @@ searchBtn.addEventListener('click', async (event) => {
 
 const mainCheckbox = document.querySelector('.main-checkbox');
 
-if (mainCheckbox) {
-    mainCheckbox.addEventListener('change', (e) => {
-        albumTable.setAllCheckboxes(e.target.checked);
-    })
+mainCheckbox.addEventListener('change', (e) => {
+    albumTable.setAllCheckboxes(e.target.checked);
+})
 
-}
 
 deleteBtn.addEventListener('click', () => {
     const albumsList = document.querySelector('.albums__list');
+
     if (albumsList.innerHTML !== '') {
         albumTable.deleteAlbum();
-    } if (mainCheckbox.checked) {
-        albumTable.deleteAlbumsListContent()
+    }
+
+    if (mainCheckbox.checked) {
+        albumTable.deleteAlbumsListContent();
     }
 })

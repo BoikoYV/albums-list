@@ -17,11 +17,9 @@ export class AlbumTable {
     }
 
     renderView() {
-        const albums = this.albumsContainer.querySelector('.albums__list');
         const mainCheckbox = this.albumsHeader.querySelector('.main-checkbox');
         mainCheckbox.checked = false;
         this.renderAlbum()
-
     }
 
     renderAlbum() {
@@ -49,9 +47,9 @@ export class AlbumTable {
     }
 
     deleteAlbumsListContent() {
-        if (this.albumsList)
-            this.albumsList.innerHTML = '';
+        if (this.albumsList) this.albumsList.innerHTML = '';
     }
+
     renderAlbumsList(list) {
         list.classList.add('list');
         list.classList.remove('grid');
@@ -83,7 +81,9 @@ export class AlbumTable {
 
             if (event.target.closest('.btn-list')) {
                 this.renderAlbumsList(albumsList);
-            } else if (event.target.closest('.btn-grid')) {
+            }
+
+            if (event.target.closest('.btn-grid')) {
                 this.renderAlbumsGrid(albumsList);
             }
         })
@@ -98,12 +98,7 @@ export class AlbumTable {
 
     setAllCheckboxes(isChecked) {
         const allCheckboxes = document.querySelectorAll('.album-checkbox');
-
-        allCheckboxes.forEach(checkbox => {
-            checkbox.checked = isChecked;
-
-
-        });
+        allCheckboxes.forEach(checkbox => checkbox.checked = isChecked);
     }
 
     createElement(tag, classes, text = '') {
