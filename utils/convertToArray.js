@@ -1,23 +1,19 @@
 import { range } from './range.js'
 
+
+const removeDuplicates = arr => [...(new Set(arr))]
+
 export default function convertToArray(value) {
+    let splittedValue = value.split(',').filter(item => item !== '0');
 
-    const ranges = [];
-    const numbers = value.split(',').filter(str => {
-        if (str.includes('-')) {
-            ranges.push(str);
-            return;
+    const mappedArr = splittedValue.map(item => {
+
+        if (item.includes('-')) {
+            const [start, end] = item.split('-');
+            return range(start, end);
         }
-        if (str === '0') return;
+        return +item
+    })
 
-        return str;
-    });
-
-    const rangesArr = (ranges.map(element => {
-        const elementSteps = element.split('-');
-        return range(elementSteps[0], elementSteps[1])
-    })).flat();
-
-    const resultArr = [...new Set(numbers.map(number => +number).concat(rangesArr))];
-    return resultArr
+    return removeDuplicates(mappedArr.flat())
 }
