@@ -1,13 +1,9 @@
-# Завдання
-Дати користувачу можливість вводити id альбомів, які він хоче отримати, та виводити результат в таблицю
-У таблиці також можна обрати декілька альбомів та видалити їх при натисканні на Delete
-У таблиці відображається інформація про власника альбома
-## Технічні вимоги
-* Користувач може вводити id в форматі "1, 3, 5", "2-4" або змішано "1, 4, 5-10, 2"
-* Запит на одного юзера відбувається тільки один раз
-* Вся таблиця відображається за допомогою js
-* При повторному запиті таблиця оновлюється новими даними
-* При натисканні на Delete відбувається видалення обраних альбомів
+### Album gallery implementation
+Look implementation on [Github Pages](https://boikoyv.github.io/albums-list/)
 
-## Advanced
-* Додати чекбокс для можливості включати/виключати чекбокси для всіх альбомів
+### Functional:
+- Getting albums that the user wants to see from server, create and displaying them in html;
+- Select albums in different formats (enumeration, ranges);
+- Deleting checked albums or all, when the checkbox in the header is checked;
+- Interface for displaying albums as a list or grid
+- Unit test for parsing albums id from search input using Jest
