@@ -1,5 +1,4 @@
-### Album gallery implementation
-Look implementation on [Github Pages](https://boikoyv.github.io/albums-list/)
+### Albums gallery
 
 ### Functional:
 - Getting albums that the user wants to see from server, create and displaying them in html;
